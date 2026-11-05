@@ -29,8 +29,10 @@ A coin-cell BLE trigger fob for a custom iPhone camera app. Plane project: `IREM
 
 ## Testing
 
-Firmware logic that doesn't touch hardware (payload encoding, counter and ack
-matching) gets host-side unit tests (Zephyr ztest on `native_sim`), 70% minimum.
+Firmware logic that doesn't touch hardware (payload encoding, ack matching, jumper decoding)
+lives in `firmware/fob/src/protocol.c` and has plain-C host tests: `make -C firmware/fob/tests`
+(70% minimum; `native_sim` doesn't run on macOS, so not ztest). Build the firmware with NCS
+v3.4.2 per `firmware/README.md` (`west build --no-sysbuild -b iphone_remote_fob ...`).
 Hardware: KiCad ERC and DRC must be clean before ordering.
 
 ## Architecture diagrams

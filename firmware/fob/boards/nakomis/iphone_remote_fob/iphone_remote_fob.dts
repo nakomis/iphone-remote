@@ -1,0 +1,78 @@
+/* The iphone-remote fob (hardware/fob, IREM-3/4): nRF52810-QCAA on a CR2032, DC/DC on,
+ * no 32 kHz crystal. Pins from hardware/fob/board/fob_board.py. */
+/dts-v1/;
+#include <nordic/nrf52810_qfaa.dtsi>
+#include <zephyr/dt-bindings/adc/nrf-saadc.h>
+
+/ {
+	model = "iphone-remote fob";
+	compatible = "nakomis,iphone-remote-fob";
+
+	chosen {
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+		zephyr,code-partition = &slot0_partition;
+	};
+
+	/* What the application drives (src/main.c). */
+	fob {
+		compatible = "nakomis,fob-io";
+		/* SW1 to GND, with R2, an external 1 M pull-up. */
+		button-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+		/* D1, red, high-active through R1 (470 R). */
+		led-gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>;
+		/* JP1..JP3 to GND: bit 0, 1, 2. The internal pull-ups are on only while they're read. */
+		id-gpios = <&gpio0 12 0>, <&gpio0 14 0>, <&gpio0 15 0>;
+		io-channels = <&adc 0>;
+	};
+};
+
+&reg {
+	regulator-initial-mode = <NRF5X_REG_MODE_DCDC>;
+};
+
+&uicr {
+	gpio-as-nreset;
+};
+
+&gpiote {
+	status = "okay";
+};
+
+/* The button wakes the chip with the port's SENSE, not a GPIOTE IN channel (which costs
+ * current while waiting). */
+&gpio0 {
+	status = "okay";
+	sense-edge-mask = <(1 << 6)>;
+};
+
+&adc {
+	status = "okay";
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	/* VDD, the cell, through the SAADC's own divider. */
+	channel@0 {
+		reg = <0>;
+		zephyr,gain = "ADC_GAIN_1_6";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME(ADC_ACQ_TIME_MICROSECONDS, 10)>;
+		zephyr,input-positive = <NRF_SAADC_VDD>;
+		zephyr,resolution = <12>;
+	};
+};
+
+&flash0 {
+	partitions {
+		ranges;
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		/* No bootloader: the whole 192 KB is the application, flashed over SWD. */
+		slot0_partition: partition@0 {
+			compatible = "zephyr,mapped-partition";
+			label = "image-0";
+			reg = <0x00000000 0x30000>;
+		};
+	};
+};

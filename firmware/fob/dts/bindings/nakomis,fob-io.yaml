@@ -1,0 +1,21 @@
+description: The iphone-remote fob's button, LED, ID jumpers and VDD channel.
+
+compatible: "nakomis,fob-io"
+
+properties:
+  button-gpios:
+    type: phandle-array
+    required: true
+    description: The press button, active low.
+  led-gpios:
+    type: phandle-array
+    required: true
+    description: The ack LED.
+  id-gpios:
+    type: phandle-array
+    required: true
+    description: The three fob-ID jumpers to GND, bit 0 first. Read with the internal pull-ups.
+  io-channels:
+    type: phandle-array
+    required: true
+    description: The ADC channel that measures VDD.

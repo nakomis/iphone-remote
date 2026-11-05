@@ -1,0 +1,13 @@
+identifier: iphone_remote_fob
+name: iphone-remote fob
+vendor: nakomis
+type: mcu
+arch: arm
+ram: 24
+flash: 192
+toolchain:
+  - zephyr
+supported:
+  - gpio
+  - adc
+  - ble

@@ -1,0 +1,32 @@
+/* Development on the Pro Micro nRF52840 (UF2 bootloader: double-tap reset, copy
+ * build/fob/zephyr/zephyr.uf2 to the drive). Wire a button from P0.17 to GND; the ID
+ * jumpers are P0.20, P0.22 and P0.24 to GND (all open: fob 0). The LED is the board's own. */
+#include <zephyr/dt-bindings/adc/nrf-saadc.h>
+
+/ {
+	fob {
+		compatible = "nakomis,fob-io";
+		button-gpios = <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+		led-gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>;
+		id-gpios = <&gpio0 20 0>, <&gpio0 22 0>, <&gpio0 24 0>;
+		io-channels = <&adc 0>;
+	};
+};
+
+&gpio0 {
+	sense-edge-mask = <(1 << 17)>;
+};
+
+&adc {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	channel@0 {
+		reg = <0>;
+		zephyr,gain = "ADC_GAIN_1_6";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME(ADC_ACQ_TIME_MICROSECONDS, 10)>;
+		zephyr,input-positive = <NRF_SAADC_VDD>;
+		zephyr,resolution = <12>;
+	};
+};

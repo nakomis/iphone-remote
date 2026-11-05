@@ -1,0 +1,15 @@
+CONFIG_ARM_MPU=y
+CONFIG_HW_STACK_PROTECTION=y
+CONFIG_GPIO=y
+
+# No 32 kHz crystal: the low-frequency clock runs on the RC oscillator, calibrated.
+CONFIG_CLOCK_CONTROL_NRF_K32SRC_RC=y
+
+# No UART on the fob (SWD and SWO only).
+CONFIG_SERIAL=n
+CONFIG_CONSOLE=n
+CONFIG_UART_CONSOLE=n
+
+# The RC oscillator is checked against the temperature every 4 s and recalibrated when it
+# changes; otherwise at least every 32 s. Indoors, that's plenty, and it saves wake-ups.
+CONFIG_CLOCK_CONTROL_NRF_CALIBRATION_MAX_SKIP=7
