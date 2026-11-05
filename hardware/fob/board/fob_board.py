@@ -14,9 +14,11 @@ GND, VBAT = "GND", "VBAT"
 BUTTON, LED = "P0.06", "P0.09"
 ID_BITS = ("P0.12", "P0.14", "P0.15")          # bit 0, 1, 2
 SWO, NRESET = "P0.18", "P0.21/nRESET"
-# Breakout header J2: pin 1 VBAT, pin 2 GND, then the ten spare GPIOs on pins 3..12.
-BREAKOUT = ("P0.00/XL1", "P0.01/XL2", "P0.04/AIN2", "P0.05/AIN3", "P0.10", "P0.16", "P0.20",
-            "P0.25", "P0.28/AIN4", "P0.30/AIN6")
+# Breakout header J2: pin 1 VBAT, pin 2 GND, then the ten spare GPIOs on pins 3..12, ordered
+# to suit the layout: the even pins (the row nearest the chip) take the chip's bottom-edge GPIOs
+# left to right, the odd pins the side GPIOs (left column, then right).
+BREAKOUT = ("P0.25", "P0.00/XL1", "P0.28/AIN4", "P0.01/XL2", "P0.30/AIN6", "P0.04/AIN2", "P0.16",
+            "P0.05/AIN3", "P0.20", "P0.10")
 # TC2030 pin -> net (Tag-Connect TC2030-CTX, ARM Cortex 10-pin mapping).
 TC2030_PINS = {"1": VBAT, "2": "SWDIO", "3": "NRESET", "4": "SWDCLK", "5": GND, "6": "SWO"}
 

@@ -4,3 +4,5 @@ freerouting/
 footprints/lcsc.3dshapes/
 __pycache__/
 .pytest_cache/
+out/fob/gerbers/
+*.kicad_prl

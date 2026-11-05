@@ -11,8 +11,8 @@ from pathlib import Path
 from board.netlist import Circuit  # noqa: F401  (documentation of the argument type)
 
 SCALE = 1000                        # DSN units per mm
-POWER = ("VBUS", "+3V3", "GND")
-POWER_WIDTH = 0.3                   # mm; 3V3 peaks at ~350 mA with Wi-Fi on (0.3 mm carries ~1 A)
+POWER = ("VBAT",)
+POWER_WIDTH = 0.25                  # mm; the fob peaks at ~10 mA, so this is generous
 # Freerouting is told the clearances are this much larger than the design rules, because it
 # narrows some pad-escape stubs (which read_ses() then widens) and rounds pad outlines.
 ROUTER_MARGIN = 0.04
@@ -89,7 +89,12 @@ def write_dsn(circuit, placement, path, layers=4, route_area=None, fixed_vias=()
         out.append(f"    (layer {l} (type {'power' if l.startswith('In') else 'signal'}))")
     out.append(f"    (boundary (path pcb 0 {outline}))")
     out.append(f"    (via {_q(via)})")
-    for l, x0_, y0_, x1_, y1_ in layer_keepouts:
+    for k in layer_keepouts:
+        if k[0] == "circle":                     # ("circle", layer, diameter, x, y)
+            _, l, d, cx, cy = k
+            out.append(f"    (keepout (circle {l} {_u(d)} {_u(cx)} {_u(-cy)}))")
+            continue
+        l, x0_, y0_, x1_, y1_ = k
         out.append(f"    (keepout (rect {l} {_u(x0_)} {_u(-y1_)} {_u(x1_)} {_u(-y0_)}))")
     for x0_, y0_, x1_, y1_ in via_keepouts:
         for l in copper:
@@ -105,6 +110,8 @@ def write_dsn(circuit, placement, path, layers=4, route_area=None, fixed_vias=()
     for ref, inst in circuit.instances.items():
         pins = []
         for pad, pid in zip(inst.part.footprint.pads, _pin_ids(inst.part.footprint.pads)):
+            if pad.kind == "np_thru_hole":      # unplated holes: not copper; keep-outs cover them
+                continue
             name, text = _padstack(pad, copper)
             stacks[name] = text
             pins.append(f"(pin {_q(name)} {_q(pid)} {_u(pad.x)} {_u(-pad.y)})")
