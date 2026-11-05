@@ -5,7 +5,7 @@ tinycrypt's `hardware/key-board` (circuit as Python, EasyEDA footprints via easy
 Freerouting, KiCad DRC, then JLCPCB fab files). The design is in
 [`docs/superpowers/specs/2026-11-05-iphone-remote-fob-design.md`](../../docs/superpowers/specs/2026-11-05-iphone-remote-fob-design.md).
 
-**Stage:** circuit done (IREM-3). Placement, routing and gerbers come with the layout (IREM-4).
+**Stage:** laid out and DRC-clean (IREM-4). Next: JLC quote (IREM-5).
 
 ## Build
 
@@ -13,7 +13,8 @@ Freerouting, KiCad DRC, then JLCPCB fab files). The design is in
 ASDF_PYTHON_VERSION=3.11.15 python -m venv .venv
 .venv/bin/pip install -r requirements.txt
 ./fetch_parts.sh             # only if footprints/ is missing or a part is added (resumable)
-.venv/bin/python build.py    # out/fob/: bom.csv, netlist.txt, pins.h
+mkdir -p freerouting && cp <somewhere>/freerouting-2.5.0.jar freerouting/   # Java via asdf
+.venv/bin/python build.py --route   # full route log: /tmp/irem-fob-route.log
 .venv/bin/python -m pytest
 ```
 
@@ -39,12 +40,35 @@ so it can be checked line by line against Nordic's "QCAA QFN32 with DC/DC regula
 | D1, R1 | red 0603 LED (C2286), 470 Ω | P0.09, active high |
 | JP1–JP3 | solder jumpers to GND | P0.12 / P0.14 / P0.15 = ID bits 0 / 1 / 2 |
 | J1 | Tag-Connect TC2030 (legged) | 1 VBAT, 2 SWDIO, 3 nRESET (P0.21), 4 SWDCLK, 5 GND, 6 SWO (P0.18) |
-| J2 | 2×6 1.27 mm header, **not fitted** | 1 VBAT, 2 GND, 3–12 P0.00, 01, 04, 05, 10, 16, 20, 25, 28, 30 |
+| J2 | 2×6 1.27 mm header, **not fitted** | 1 VBAT, 2 GND, 3 P0.25, 4 P0.00, 5 P0.28, 6 P0.01, 7 P0.30, 8 P0.04, 9 P0.16, 10 P0.05, 11 P0.20, 12 P0.10 (ordered to suit the routing) |
 
 22 parts are assembled, with 7 extended parts. Every LCSC part was checked as in stock and
 "Economic and Standard" on its JLC page on 5 Nov 2026.
 
-## Layout rules carried into IREM-4
+## Layout (IREM-4)
+
+`build.py --route` writes `out/fob/`: the board (`iphone-remote-fob.kicad_pcb`), `drc.json`,
+`bom.csv`, `cpl.csv`, the gerbers zip, top and bottom renders, and
+`iphone-remote-fob-outline.dxf` (board edge + courtyards, for the case). Fab files are written
+only when KiCad's DRC has no errors and nothing unconnected. Freerouting isn't deterministic;
+rerun if a run leaves something open.
+
+- **Board:** 29 × 47 mm, 2 layers, 1.6 mm, every part on top. Antenna on the top edge, the
+  nRF52810 just below it with the TC2030 to its right, the unpopulated breakout under the chip,
+  the ID jumpers (labelled 1 / 2 / 4) under the TC2030, button and LED below, the CR2032 at the
+  far end.
+- **Hand-routed** (`board/fob_layout.py`, `rf_hand_route`): the RF chain, crystal, DEC1/3/4, the
+  DC/DC, VDD to its three caps, escapes to vias for the pins the router couldn't reach, and the
+  TC2030 fan-out (one track per gap between its leg holes, to vias outside them). Freerouting
+  does the rest.
+- **B.Cu kept solid** under the chip and under the RF line (router keep-outs), with nine vias in
+  the chip's exposed pad and GND stitching on a 1.5 mm grid elsewhere.
+- **Every GND pad joins the pour solidly** (no thermal spokes).
+- **Courtyard overlaps are warnings, not errors** (`kicad_pcb.py` rule severities): the 0402s
+  round the QFN sit inside its generous courtyard by design.
+- The remaining warnings are silk overlaps and one unused fan-out via.
+
+## Layout rules (from the antenna datasheet)
 
 - **Antenna** (Johanson datasheet, evaluation-board layout): edge-mounted, on the board edge,
   with **no copper on any layer** in a 4.0 × 6.0 mm area around it (pads plus 4.1 mm into the

@@ -52,7 +52,7 @@ _TABLE = {
     "R0": ("0R", "C17168", "R0402", "0402WGF0000TCE", False, 0),
     # Not fitted (dnp): footprints for retuning the antenna match by hand.
     "CDNP": ("DNP", None, "C0402", None, False, 0),
-    "JUMPER": ("Solder jumper", None, "SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm", None, False, 0),
+    "JUMPER": ("Solder jumper", None, "SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm", None, False, 0),
     "HDR": ("2x6 1.27mm (unpopulated)", None, "PinHeader_2x06_P1.27mm_Vertical", None, False, 0),
     "TC2030": ("TC2030-CTX (SWD)", None, "Tag-Connect_TC2030-IDC-FP_2x03_P1.27mm_Vertical", None, False, 0),
 }

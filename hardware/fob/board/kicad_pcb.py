@@ -145,6 +145,14 @@ def _footprint(inst, x, y, rot, nets, uid, hide_ref=False, model_dir=None):
         if rot:                                      # text angles are absolute on a board
             at = find(t, "at")
             at[:] = at[:3] + [(at[3] if len(at) > 3 else 0) + rot]
+    for t in find_all(fp, "property"):                # KiCad 8+ stock footprints
+        if t[1] == "Reference":
+            t[2] = inst.ref
+            if hide_ref:
+                t.append([S("hide"), S("yes")])
+        elif t[1] == "Value":
+            t[2] = inst.value
+            t.append([S("hide"), S("yes")])
     for arc in find_all(fp, "fp_arc"):
         if find(arc, "angle") is not None:
             _modern_arc(arc)
@@ -237,13 +245,14 @@ PRO = {
     "meta": {"filename": "board.kicad_pro", "version": 1},
     "board": {"design_settings": {"rules": {
         "min_clearance": 0.15, "min_track_width": 0.15, "min_via_diameter": 0.5,
-        "min_through_hole_diameter": 0.3, "min_copper_edge_clearance": 0.3}}},
+        "min_through_hole_diameter": 0.3, "min_copper_edge_clearance": 0.3},
+        "rule_severities": {"courtyards_overlap": "warning"}}},
     "net_settings": {
         "meta": {"version": 3},      # without this KiCad ignores the classes and uses 0.2 mm
         "classes": [
             {"name": "Default", "clearance": 0.15, "track_width": 0.15, "via_diameter": 0.6, "via_drill": 0.3},
             {"name": "Power", "clearance": 0.2, "track_width": 0.3, "via_diameter": 0.6, "via_drill": 0.3}],
-        "netclass_patterns": [{"netclass": "Power", "pattern": p} for p in ("+*", "GND", "VBUS")]},
+        "netclass_patterns": [{"netclass": "Power", "pattern": p} for p in ("VBAT",)]},
 }
 
 
