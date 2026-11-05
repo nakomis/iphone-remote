@@ -29,6 +29,7 @@
 #define ACK_FLASH_MS 50
 #define MISS_FLASH_MS 15
 #define MISS_GAP_MS 120
+#define FAULT_FLASH_MS 100		/* the radio refused to start: three of these */
 
 static const struct gpio_dt_spec button = GPIO_DT_SPEC_GET(FOB_NODE, button_gpios);
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(FOB_NODE, led_gpios);
@@ -41,7 +42,7 @@ static const struct adc_dt_spec vdd_channel = ADC_DT_SPEC_GET(FOB_NODE);
 
 /* Everything below runs on this queue, so the press state needs no lock; the scan callback
  * (the Bluetooth RX thread) only reads it to match an ack, then hands over to the queue. */
-K_THREAD_STACK_DEFINE(fob_stack, 1024);
+K_THREAD_STACK_DEFINE(fob_stack, 1536);
 static struct k_work_q fob_q;
 
 static struct {
@@ -51,8 +52,13 @@ static struct {
 } press;
 /* Set while a press is waiting for its ack (the value of press.counter, plus 1, so 0 = none). */
 static atomic_t listening_for;
+/* The listening_for value an ack was matched against, so a late ack for an earlier press can't
+ * end a newer one. */
+static atomic_t acked_for;
 
-static bool held;	/* the button is down (debounced release) */
+/* The button is down. Set by the edge ISR, cleared by release_timer (also interrupt context), so
+ * nothing on the work queue can hold up a release. */
+static volatile bool held;
 
 static uint8_t mfg[FOB_MFG_LEN];
 static const struct bt_data ad[] = {
@@ -64,12 +70,14 @@ static void press_work_fn(struct k_work *w);
 static void burst_end_fn(struct k_work *w);
 static void listen_end_fn(struct k_work *w);
 static void acked_fn(struct k_work *w);
-static void release_check_fn(struct k_work *w);
+static void led_step_fn(struct k_work *w);
+static void release_fn(struct k_timer *t);
 static K_WORK_DEFINE(press_work, press_work_fn);
 static K_WORK_DEFINE(acked_work, acked_fn);
 static K_WORK_DELAYABLE_DEFINE(burst_end, burst_end_fn);
 static K_WORK_DELAYABLE_DEFINE(listen_end, listen_end_fn);
-static K_WORK_DELAYABLE_DEFINE(release_check, release_check_fn);
+static K_WORK_DELAYABLE_DEFINE(led_step, led_step_fn);
+static K_TIMER_DEFINE(release_timer, release_fn, NULL);
 
 static uint8_t read_fob_id(void)
 {
@@ -100,16 +108,33 @@ static int read_vdd_mv(void)
 	return adc_raw_to_millivolts_dt(&vdd_channel, &mv) ? 0 : mv;
 }
 
+/* LED flashes run on the system work queue, without blocking, so a flash never delays a press.
+ * A new pattern replaces one still running. */
+static struct {
+	int steps;	/* LED changes still to make: on, off, on, off... */
+	int on_ms, gap_ms;
+} blink;
+
+static void led_step_fn(struct k_work *w)
+{
+	if (blink.steps <= 0) {
+		gpio_pin_set_dt(&led, 0);
+		return;
+	}
+	bool on = blink.steps % 2 == 0;
+
+	gpio_pin_set_dt(&led, on);
+	blink.steps--;
+	k_work_reschedule(&led_step, K_MSEC(on ? blink.on_ms : blink.gap_ms));
+}
+
 static void flash(int times, int on_ms, int gap_ms)
 {
-	for (int i = 0; i < times; i++) {
-		if (i) {
-			k_msleep(gap_ms);
-		}
-		gpio_pin_set_dt(&led, 1);
-		k_msleep(on_ms);
-		gpio_pin_set_dt(&led, 0);
-	}
+	k_work_cancel_delayable(&led_step);
+	blink.steps = times * 2;
+	blink.on_ms = on_ms;
+	blink.gap_ms = gap_ms;
+	k_work_reschedule(&led_step, K_NO_WAIT);
 }
 
 static void stop_radio(void)
@@ -133,37 +158,49 @@ static bool ad_has_ack(struct bt_data *data, void *user)
 static void scanned(const bt_addr_le_t *addr, int8_t rssi, uint8_t type, struct net_buf_simple *buf)
 {
 	bool found = false;
+	atomic_val_t want = atomic_get(&listening_for);
 
-	if (atomic_get(&listening_for) != press.counter + 1) {
+	if (want == 0 || want != press.counter + 1) {
 		return;
 	}
 	bt_data_parse(buf, ad_has_ack, &found);
 	if (found) {
+		atomic_set(&acked_for, want);
 		k_work_submit_to_queue(&fob_q, &acked_work);
 	}
 }
 
 static void press_work_fn(struct k_work *w)
 {
-	/* VDD first, before the radio loads the cell. */
+	/* Stop a press still listening (a re-press within 2 s) before measuring, so VDD is read
+	 * without the radio's load on the cell. */
+	atomic_set(&listening_for, 0);
+	stop_radio();
+	k_msleep(2);
 	int mv = read_vdd_mv();
 
-	stop_radio();
 	press.counter++;
 	press.fob_id = read_fob_id();
 	press.low = mv > 0 && mv < LOW_MV;
 	fob_press_mfg(mfg, press.fob_id, press.counter, fob_battery_byte(mv));
 	atomic_set(&listening_for, press.counter + 1);
 
-	static const struct bt_le_adv_param adv = BT_LE_ADV_PARAM_INIT(0, ADV_INTERVAL, ADV_INTERVAL, NULL);
+	/* Non-connectable, from the chip's random static address (docs/protocol.md §2). */
+	static const struct bt_le_adv_param adv =
+		BT_LE_ADV_PARAM_INIT(BT_LE_ADV_OPT_USE_IDENTITY, ADV_INTERVAL, ADV_INTERVAL, NULL);
 	static const struct bt_le_scan_param scan = {
 		.type = BT_LE_SCAN_TYPE_PASSIVE,
 		.interval = SCAN_INTERVAL,
 		.window = SCAN_WINDOW,
 	};
 
-	bt_le_adv_start(&adv, ad, ARRAY_SIZE(ad), NULL, 0);
-	bt_le_scan_start(&scan, scanned);
+	if (bt_le_adv_start(&adv, ad, ARRAY_SIZE(ad), NULL, 0) || bt_le_scan_start(&scan, scanned)) {
+		/* Not the same as "the phone didn't hear": three long flashes. */
+		atomic_set(&listening_for, 0);
+		stop_radio();
+		flash(3, FAULT_FLASH_MS, FAULT_FLASH_MS);
+		return;
+	}
 	k_work_reschedule_for_queue(&fob_q, &burst_end, K_MSEC(BURST_MS));
 	k_work_reschedule_for_queue(&fob_q, &listen_end, K_MSEC(press.low ? LISTEN_LOW_MS : LISTEN_MS));
 }
@@ -186,8 +223,8 @@ static void listen_end_fn(struct k_work *w)
 
 static void acked_fn(struct k_work *w)
 {
-	if (atomic_set(&listening_for, 0) == 0) {
-		return;	/* a second ack advert for the same press, or a late one */
+	if (!atomic_cas(&listening_for, atomic_get(&acked_for), 0)) {
+		return;	/* a second ack advert for the same press, or one for an earlier press */
 	}
 	stop_radio();
 	k_work_cancel_delayable(&burst_end);
@@ -198,8 +235,9 @@ static void acked_fn(struct k_work *w)
 }
 
 /* The first edge of a press acts at once; the release counts once the pin has been quiet and
- * high for RELEASE_MS, so contact bounce on either edge never makes a second press. */
-static void release_check_fn(struct k_work *w)
+ * high for RELEASE_MS, so contact bounce on either edge never makes a second press. Both run in
+ * interrupt context at the same priority, so neither interrupts the other. */
+static void release_fn(struct k_timer *t)
 {
 	if (gpio_pin_get_dt(&button) == 0) {
 		held = false;
@@ -212,7 +250,7 @@ static void button_edge(const struct device *dev, struct gpio_callback *cb, uint
 		held = true;
 		k_work_submit_to_queue(&fob_q, &press_work);
 	}
-	k_work_reschedule_for_queue(&fob_q, &release_check, K_MSEC(RELEASE_MS));
+	k_timer_start(&release_timer, K_MSEC(RELEASE_MS), K_NO_WAIT);
 }
 
 static struct gpio_callback button_cb;
