@@ -9,3 +9,7 @@ CONFIG_CLOCK_CONTROL_NRF_K32SRC_RC=y
 CONFIG_SERIAL=n
 CONFIG_CONSOLE=n
 CONFIG_UART_CONSOLE=n
+
+# The RC oscillator is checked against the temperature every 4 s and recalibrated when it
+# changes; otherwise at least every 32 s. Indoors, that's plenty, and it saves wake-ups.
+CONFIG_CLOCK_CONTROL_NRF_CALIBRATION_MAX_SKIP=7

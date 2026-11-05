@@ -36,11 +36,15 @@ cd ~/ncs/v3.4.2
 
 ```sh
 # The fob
-west build -p -b iphone_remote_fob -d build/fob ~/repos/nakomis/iphone-remote/firmware/fob
+west build -p --no-sysbuild -b iphone_remote_fob -d build/fob ~/repos/nakomis/iphone-remote/firmware/fob
 
 # A Pro Micro nRF52840, for development (makes zephyr.uf2)
-west build -p -b promicro_nrf52840/nrf52840/uf2 -d build/promicro ~/repos/nakomis/iphone-remote/firmware/fob
+west build -p --no-sysbuild -b promicro_nrf52840/nrf52840/uf2 -d build/promicro ~/repos/nakomis/iphone-remote/firmware/fob
 ```
+
+`--no-sysbuild` because there's no bootloader to build, and so sysbuild doesn't need to know
+about the app's own board. Sizes on 5 Nov 2026: the fob image is 110,712 B of 192 KB flash
+(56%) and 19,120 B of 24 KB RAM (78%), with the SoftDevice Controller (multirole library).
 
 The Pro Micro uses its UF2 bootloader. Double-tap reset, then copy
 `build/promicro/zephyr/zephyr.uf2` onto the drive that appears. Wire:

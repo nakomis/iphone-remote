@@ -359,7 +359,8 @@ latency) is first proved on a real fob after the boards arrive. The board is
 largely protocol-agnostic, so a surprise there should be a firmware change,
 not a respin.
 
-1. **Firmware size:** build an NCS broadcaster + observer sample for
+1. **Firmware size** (done 5 Nov 2026, after ordering: the real firmware, NCS v3.4.2, is
+   110.7 KB flash / 19.1 KB RAM on the nRF52810; see `firmware/README.md`): build an NCS broadcaster + observer sample for
    `nrf52810` and confirm it fits in 192 KB flash / 24 KB RAM with margin.
    If not, the fallback is the nRF52832 (different footprint, decide before
    layout).

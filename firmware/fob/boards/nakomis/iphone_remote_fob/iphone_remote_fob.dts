@@ -16,7 +16,7 @@
 
 	/* What the application drives (src/main.c). */
 	fob {
-		compatible = "nakomis,iphone-remote-fob";
+		compatible = "nakomis,fob-io";
 		/* SW1 to GND, with R2, an external 1 M pull-up. */
 		button-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
 		/* D1, red, high-active through R1 (470 R). */

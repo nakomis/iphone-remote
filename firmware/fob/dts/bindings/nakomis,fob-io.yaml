@@ -1,6 +1,6 @@
 description: The iphone-remote fob's button, LED, ID jumpers and VDD channel.
 
-compatible: "nakomis,iphone-remote-fob"
+compatible: "nakomis,fob-io"
 
 properties:
   button-gpios:
