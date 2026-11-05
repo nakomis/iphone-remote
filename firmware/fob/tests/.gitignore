@@ -2,3 +2,4 @@ test_protocol
 *.gcda
 *.gcno
 *.gcov
+*.dSYM/
