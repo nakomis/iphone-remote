@@ -237,6 +237,10 @@ Battery voltage is measured on the chip's internal VDD channel; no pin needed.
 
 ## 6. Over-the-air protocol (draft; IREM-2 finalises it for the app)
 
+**Superseded by [`docs/protocol.md`](../../protocol.md)** (IREM-2, final for
+version 1), which fixes the UUIDs, the ack's byte order and the de-duplication
+time-out. This section is kept as the design-time draft.
+
 ### 6.1 Press advert (fob → phone)
 
 Legacy, non-connectable, undirected advertising (`ADV_NONCONN_IND`). Random
