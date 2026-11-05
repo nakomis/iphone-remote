@@ -1,7 +1,7 @@
 {
     "$schema": "https://schemas.kicad.org/drc.v1.json",
     "coordinate_units": "mm",
-    "date": "2026-11-05T02:23:06",
+    "date": "2026-11-05T13:58:52",
     "ignored_checks": [
         {
             "description": "Footprint has no courtyard defined",
@@ -58,7 +58,7 @@
                         "x": 13.8,
                         "y": 9.3
                     },
-                    "uuid": "0acde66f-e8d0-4240-9826-0beb839cf012"
+                    "uuid": "8d5626f5-7896-43d9-9091-ce1e409b376d"
                 },
                 {
                     "description": "Segment of C5 on F.Silkscreen",
@@ -66,7 +66,7 @@
                         "x": 14.25,
                         "y": 9.38
                     },
-                    "uuid": "a5c91a53-5023-4d53-8a0a-6cfcdfe27605"
+                    "uuid": "9691c0b0-37f0-42b2-a7cc-f20f170c7c35"
                 }
             ],
             "severity": "warning",
@@ -75,21 +75,21 @@
         {
             "description": "Silkscreen clearance",
             "items": [
+                {
+                    "description": "Segment of C5 on F.Silkscreen",
+                    "pos": {
+                        "x": 14.25,
+                        "y": 9.38
+                    },
+                    "uuid": "9691c0b0-37f0-42b2-a7cc-f20f170c7c35"
+                },
                 {
                     "description": "Segment of U1 on F.Silkscreen",
                     "pos": {
                         "x": 14.2,
                         "y": 9.3
                     },
-                    "uuid": "6df77bbe-fbae-45d1-9a4f-f32a88aeff9e"
-                },
-                {
-                    "description": "Segment of C5 on F.Silkscreen",
-                    "pos": {
-                        "x": 14.25,
-                        "y": 9.38
-                    },
-                    "uuid": "a5c91a53-5023-4d53-8a0a-6cfcdfe27605"
+                    "uuid": "ad539ee4-944f-4d4c-b2f5-dd4ab3172ab9"
                 }
             ],
             "severity": "warning",
@@ -98,21 +98,21 @@
         {
             "description": "Silkscreen clearance",
             "items": [
+                {
+                    "description": "Arc of C5 on F.Silkscreen",
+                    "pos": {
+                        "x": 14.25,
+                        "y": 9.53
+                    },
+                    "uuid": "109f9e39-41e1-42b3-899f-186e472b8eae"
+                },
                 {
                     "description": "Segment of U1 on F.Silkscreen",
                     "pos": {
                         "x": 13.8,
                         "y": 9.3
                     },
-                    "uuid": "0acde66f-e8d0-4240-9826-0beb839cf012"
-                },
-                {
-                    "description": "Arc of C5 on F.Silkscreen",
-                    "pos": {
-                        "x": 14.25,
-                        "y": 9.53
-                    },
-                    "uuid": "22efbc96-18a8-4eef-84cf-25538e5142ba"
+                    "uuid": "8d5626f5-7896-43d9-9091-ce1e409b376d"
                 }
             ],
             "severity": "warning",
@@ -127,7 +127,7 @@
                         "x": 14.25,
                         "y": 9.53
                     },
-                    "uuid": "22efbc96-18a8-4eef-84cf-25538e5142ba"
+                    "uuid": "109f9e39-41e1-42b3-899f-186e472b8eae"
                 },
                 {
                     "description": "Segment of U1 on F.Silkscreen",
@@ -135,7 +135,7 @@
                         "x": 14.2,
                         "y": 9.3
                     },
-                    "uuid": "6df77bbe-fbae-45d1-9a4f-f32a88aeff9e"
+                    "uuid": "ad539ee4-944f-4d4c-b2f5-dd4ab3172ab9"
                 }
             ],
             "severity": "warning",
@@ -145,20 +145,20 @@
             "description": "Silkscreen clearance",
             "items": [
                 {
-                    "description": "Segment of L2 on F.Silkscreen",
-                    "pos": {
-                        "x": 7.01,
-                        "y": 8.47
-                    },
-                    "uuid": "d8462118-ed52-47a6-85e8-562373e3e16a"
-                },
-                {
                     "description": "Arc of C9 on F.Silkscreen",
                     "pos": {
                         "x": 7.3,
                         "y": 8.22
                     },
-                    "uuid": "ef385f81-6732-40c8-80b3-41ee032febb8"
+                    "uuid": "9a01d33e-0c7d-42ca-9dd7-7ce332384be8"
+                },
+                {
+                    "description": "Segment of L2 on F.Silkscreen",
+                    "pos": {
+                        "x": 7.01,
+                        "y": 8.47
+                    },
+                    "uuid": "bebd3fd2-a2d6-4060-8e7c-5a0a05093a82"
                 }
             ],
             "severity": "warning",
@@ -173,7 +173,7 @@
                         "x": 6.17,
                         "y": 2.1
                     },
-                    "uuid": "521387e9-a2e8-430c-82e9-67be5a0c8d9d"
+                    "uuid": "55fa256b-0cae-4361-b371-4f99c31ddf42"
                 },
                 {
                     "description": "Segment of Y1 on F.Silkscreen",
@@ -181,7 +181,7 @@
                         "x": 6.15,
                         "y": 0.65
                     },
-                    "uuid": "d972719e-e7e3-4b0e-a1d8-67618f62b880"
+                    "uuid": "dbb7ad61-fbfb-4117-9d22-50efe316be0f"
                 }
             ],
             "severity": "warning",
@@ -196,7 +196,7 @@
                         "x": 6.17,
                         "y": 1.25
                     },
-                    "uuid": "5271c436-5b62-4b9d-afd7-82b4fdf3e29d"
+                    "uuid": "7e1fcd27-e592-4a8d-af57-832b87585c6e"
                 },
                 {
                     "description": "Segment of Y1 on F.Silkscreen",
@@ -204,7 +204,7 @@
                         "x": 6.15,
                         "y": 0.65
                     },
-                    "uuid": "d972719e-e7e3-4b0e-a1d8-67618f62b880"
+                    "uuid": "dbb7ad61-fbfb-4117-9d22-50efe316be0f"
                 }
             ],
             "severity": "warning",
@@ -219,7 +219,7 @@
                         "x": 6.17,
                         "y": 1.95
                     },
-                    "uuid": "d0855159-2d4b-4036-9228-9cd116cf7419"
+                    "uuid": "bdaa1379-9a16-4e35-8d16-d8f6a85dd531"
                 },
                 {
                     "description": "Segment of Y1 on F.Silkscreen",
@@ -227,7 +227,7 @@
                         "x": 6.15,
                         "y": 0.65
                     },
-                    "uuid": "d972719e-e7e3-4b0e-a1d8-67618f62b880"
+                    "uuid": "dbb7ad61-fbfb-4117-9d22-50efe316be0f"
                 }
             ],
             "severity": "warning",
@@ -242,7 +242,7 @@
                         "x": 5.67,
                         "y": 1.1
                     },
-                    "uuid": "bc59bda0-4b12-4edf-87d7-932758a6e176"
+                    "uuid": "76cd78aa-e2ba-4c19-81d5-7bbc0b9a5b6e"
                 },
                 {
                     "description": "Segment of Y1 on F.Silkscreen",
@@ -250,7 +250,7 @@
                         "x": 6.15,
                         "y": 0.65
                     },
-                    "uuid": "d972719e-e7e3-4b0e-a1d8-67618f62b880"
+                    "uuid": "dbb7ad61-fbfb-4117-9d22-50efe316be0f"
                 }
             ],
             "severity": "warning",
@@ -259,21 +259,21 @@
         {
             "description": "Silkscreen clearance",
             "items": [
-                {
-                    "description": "Segment of C9 on F.Silkscreen",
-                    "pos": {
-                        "x": 6.99,
-                        "y": 9.02
-                    },
-                    "uuid": "8139d808-476c-4e4a-8e5a-91d9dd879895"
-                },
                 {
                     "description": "Segment of L2 on F.Silkscreen",
                     "pos": {
                         "x": 7.01,
                         "y": 9.03
                     },
-                    "uuid": "93dab92d-a541-4318-9214-8437cab6e279"
+                    "uuid": "7e677c4f-d609-46f3-b20f-42c53f81c7fc"
+                },
+                {
+                    "description": "Segment of C9 on F.Silkscreen",
+                    "pos": {
+                        "x": 6.99,
+                        "y": 9.02
+                    },
+                    "uuid": "ab6a67e2-a3fb-4d74-a715-fb49bb335c7c"
                 }
             ],
             "severity": "warning",
@@ -288,7 +288,7 @@
                         "x": 6.99,
                         "y": 9.02
                     },
-                    "uuid": "8139d808-476c-4e4a-8e5a-91d9dd879895"
+                    "uuid": "ab6a67e2-a3fb-4d74-a715-fb49bb335c7c"
                 },
                 {
                     "description": "Segment of L2 on F.Silkscreen",
@@ -296,7 +296,7 @@
                         "x": 7.01,
                         "y": 8.47
                     },
-                    "uuid": "d8462118-ed52-47a6-85e8-562373e3e16a"
+                    "uuid": "bebd3fd2-a2d6-4060-8e7c-5a0a05093a82"
                 }
             ],
             "severity": "warning",
@@ -311,7 +311,7 @@
                         "x": 7.01,
                         "y": 9.03
                     },
-                    "uuid": "93dab92d-a541-4318-9214-8437cab6e279"
+                    "uuid": "7e677c4f-d609-46f3-b20f-42c53f81c7fc"
                 },
                 {
                     "description": "Segment of C9 on F.Silkscreen",
@@ -319,7 +319,7 @@
                         "x": 6.99,
                         "y": 9.58
                     },
-                    "uuid": "f4c75c89-dc83-49da-9cd9-98255ab9b6a5"
+                    "uuid": "ff49c6ab-3982-43f0-b4b5-967a1d9d90db"
                 }
             ],
             "severity": "warning",
@@ -329,20 +329,20 @@
             "description": "Silkscreen clearance",
             "items": [
                 {
-                    "description": "Segment of C9 on F.Silkscreen",
-                    "pos": {
-                        "x": 6.99,
-                        "y": 9.58
-                    },
-                    "uuid": "f4c75c89-dc83-49da-9cd9-98255ab9b6a5"
-                },
-                {
                     "description": "Arc of L2 on F.Silkscreen",
                     "pos": {
                         "x": 6.7,
                         "y": 9.83
                     },
-                    "uuid": "fa34da20-41ca-4fc9-9fff-0b64e0eafd96"
+                    "uuid": "9c0cb73e-9a78-48f1-af0e-600fbbcdfa13"
+                },
+                {
+                    "description": "Segment of C9 on F.Silkscreen",
+                    "pos": {
+                        "x": 6.99,
+                        "y": 9.58
+                    },
+                    "uuid": "ff49c6ab-3982-43f0-b4b5-967a1d9d90db"
                 }
             ],
             "severity": "warning",
@@ -357,7 +357,7 @@
                         "x": 5.59,
                         "y": 8.47
                     },
-                    "uuid": "777e1e88-e24c-4a74-b464-b9b2a93f5257"
+                    "uuid": "dcec9aa2-07b1-4709-9f1d-038f3dd219bd"
                 },
                 {
                     "description": "Arc of C10 on F.Silkscreen",
@@ -365,7 +365,7 @@
                         "x": 5.2,
                         "y": 7.43
                     },
-                    "uuid": "88c6043f-d4fa-4f6f-9305-5635c4ae4dc1"
+                    "uuid": "f2ef3766-b3b5-42a5-93af-0b88bf6f74c1"
                 }
             ],
             "severity": "warning",
@@ -380,7 +380,7 @@
                         "x": 5.9,
                         "y": 7.67
                     },
-                    "uuid": "dce24602-3e6e-479c-b1ee-3190769270bc"
+                    "uuid": "7ee093e2-58f0-47b0-ab8d-f6142b25a759"
                 },
                 {
                     "description": "Segment of C10 on F.Silkscreen",
@@ -388,7 +388,7 @@
                         "x": 5.51,
                         "y": 6.63
                     },
-                    "uuid": "fcf2cd3b-08d6-4160-850a-17ad48c812b6"
+                    "uuid": "8e706ef5-c5b1-43a2-a941-0af63965411b"
                 }
             ],
             "severity": "warning",
@@ -397,21 +397,21 @@
         {
             "description": "Silkscreen clearance",
             "items": [
-                {
-                    "description": "Arc of C10 on F.Silkscreen",
-                    "pos": {
-                        "x": 5.2,
-                        "y": 7.43
-                    },
-                    "uuid": "88c6043f-d4fa-4f6f-9305-5635c4ae4dc1"
-                },
                 {
                     "description": "Arc of L2 on F.Silkscreen",
                     "pos": {
                         "x": 5.9,
                         "y": 7.67
                     },
-                    "uuid": "dce24602-3e6e-479c-b1ee-3190769270bc"
+                    "uuid": "7ee093e2-58f0-47b0-ab8d-f6142b25a759"
+                },
+                {
+                    "description": "Arc of C10 on F.Silkscreen",
+                    "pos": {
+                        "x": 5.2,
+                        "y": 7.43
+                    },
+                    "uuid": "f2ef3766-b3b5-42a5-93af-0b88bf6f74c1"
                 }
             ],
             "severity": "warning",
@@ -426,7 +426,7 @@
                         "x": 5.2,
                         "y": 7.74
                     },
-                    "uuid": "3aab9242-45c8-4f21-890e-b063967013c1"
+                    "uuid": "1bbf2ef1-5586-4c56-a00f-fef4939a909e"
                 },
                 {
                     "description": "Segment of L3 on F.Silkscreen",
@@ -434,7 +434,7 @@
                         "x": 5.31,
                         "y": 7.98
                     },
-                    "uuid": "b8c5c17e-8e71-4743-bc8f-a3610916223f"
+                    "uuid": "2901909d-29fd-46ef-829b-6b906c8bd5cc"
                 }
             ],
             "severity": "warning",
@@ -443,21 +443,21 @@
         {
             "description": "Silkscreen clearance",
             "items": [
+                {
+                    "description": "Segment of L3 on F.Silkscreen",
+                    "pos": {
+                        "x": 5.31,
+                        "y": 7.98
+                    },
+                    "uuid": "2901909d-29fd-46ef-829b-6b906c8bd5cc"
+                },
                 {
                     "description": "Arc of C10 on F.Silkscreen",
                     "pos": {
                         "x": 5.2,
                         "y": 7.43
                     },
-                    "uuid": "88c6043f-d4fa-4f6f-9305-5635c4ae4dc1"
-                },
-                {
-                    "description": "Segment of L3 on F.Silkscreen",
-                    "pos": {
-                        "x": 5.31,
-                        "y": 7.98
-                    },
-                    "uuid": "b8c5c17e-8e71-4743-bc8f-a3610916223f"
+                    "uuid": "f2ef3766-b3b5-42a5-93af-0b88bf6f74c1"
                 }
             ],
             "severity": "warning",
@@ -466,21 +466,21 @@
         {
             "description": "Silkscreen clearance",
             "items": [
+                {
+                    "description": "Segment of L3 on F.Silkscreen",
+                    "pos": {
+                        "x": 5.16,
+                        "y": 7.83
+                    },
+                    "uuid": "122ac350-f360-40ba-a0c9-382ac8c9cef9"
+                },
                 {
                     "description": "Segment of C10 on F.Silkscreen",
                     "pos": {
                         "x": 5.2,
                         "y": 7.74
                     },
-                    "uuid": "3aab9242-45c8-4f21-890e-b063967013c1"
-                },
-                {
-                    "description": "Segment of L3 on F.Silkscreen",
-                    "pos": {
-                        "x": 5.16,
-                        "y": 7.83
-                    },
-                    "uuid": "8bc3a389-5247-432c-b6ae-25e2033d8d02"
+                    "uuid": "1bbf2ef1-5586-4c56-a00f-fef4939a909e"
                 }
             ],
             "severity": "warning",
@@ -489,21 +489,21 @@
         {
             "description": "Silkscreen clearance",
             "items": [
+                {
+                    "description": "Segment of L3 on F.Silkscreen",
+                    "pos": {
+                        "x": 5.16,
+                        "y": 7.83
+                    },
+                    "uuid": "122ac350-f360-40ba-a0c9-382ac8c9cef9"
+                },
                 {
                     "description": "Arc of C10 on F.Silkscreen",
                     "pos": {
                         "x": 5.2,
                         "y": 7.43
                     },
-                    "uuid": "88c6043f-d4fa-4f6f-9305-5635c4ae4dc1"
-                },
-                {
-                    "description": "Segment of L3 on F.Silkscreen",
-                    "pos": {
-                        "x": 5.16,
-                        "y": 7.83
-                    },
-                    "uuid": "8bc3a389-5247-432c-b6ae-25e2033d8d02"
+                    "uuid": "f2ef3766-b3b5-42a5-93af-0b88bf6f74c1"
                 }
             ],
             "severity": "warning",
@@ -512,44 +512,21 @@
         {
             "description": "Silkscreen clearance",
             "items": [
+                {
+                    "description": "Segment of L3 on F.Silkscreen",
+                    "pos": {
+                        "x": 5.16,
+                        "y": 7.83
+                    },
+                    "uuid": "122ac350-f360-40ba-a0c9-382ac8c9cef9"
+                },
                 {
                     "description": "Arc of C10 on F.Silkscreen",
                     "pos": {
                         "x": 4.4,
                         "y": 7.43
                     },
-                    "uuid": "6d6e052b-be5f-4164-a81a-5a9dc9b2430c"
-                },
-                {
-                    "description": "Segment of L3 on F.Silkscreen",
-                    "pos": {
-                        "x": 5.16,
-                        "y": 7.83
-                    },
-                    "uuid": "8bc3a389-5247-432c-b6ae-25e2033d8d02"
-                }
-            ],
-            "severity": "warning",
-            "type": "silk_overlap"
-        },
-        {
-            "description": "Silkscreen clearance",
-            "items": [
-                {
-                    "description": "Segment of C10 on F.Silkscreen",
-                    "pos": {
-                        "x": 5.2,
-                        "y": 7.74
-                    },
-                    "uuid": "3aab9242-45c8-4f21-890e-b063967013c1"
-                },
-                {
-                    "description": "Segment of L3 on F.Silkscreen",
-                    "pos": {
-                        "x": 4.47,
-                        "y": 7.83
-                    },
-                    "uuid": "49920c7c-c036-4ca0-b01b-19021f87efab"
+                    "uuid": "42e9bf13-f5d8-49c0-9cc2-c8495656e9c7"
                 }
             ],
             "severity": "warning",
@@ -564,15 +541,15 @@
                         "x": 4.47,
                         "y": 7.83
                     },
-                    "uuid": "49920c7c-c036-4ca0-b01b-19021f87efab"
+                    "uuid": "00e32d9d-b982-4a56-821d-b2bfd8ea6185"
                 },
                 {
-                    "description": "Arc of C10 on F.Silkscreen",
+                    "description": "Segment of C10 on F.Silkscreen",
                     "pos": {
-                        "x": 4.4,
-                        "y": 7.43
+                        "x": 5.2,
+                        "y": 7.74
                     },
-                    "uuid": "6d6e052b-be5f-4164-a81a-5a9dc9b2430c"
+                    "uuid": "1bbf2ef1-5586-4c56-a00f-fef4939a909e"
                 }
             ],
             "severity": "warning",
@@ -582,20 +559,43 @@
             "description": "Silkscreen clearance",
             "items": [
                 {
-                    "description": "Arc of C7 on F.Silkscreen",
+                    "description": "Segment of L3 on F.Silkscreen",
                     "pos": {
-                        "x": 11.89,
-                        "y": 2.65
+                        "x": 4.47,
+                        "y": 7.83
                     },
-                    "uuid": "b42f22f2-6673-471e-804a-70b8b2020f96"
+                    "uuid": "00e32d9d-b982-4a56-821d-b2bfd8ea6185"
                 },
+                {
+                    "description": "Arc of C10 on F.Silkscreen",
+                    "pos": {
+                        "x": 4.4,
+                        "y": 7.43
+                    },
+                    "uuid": "42e9bf13-f5d8-49c0-9cc2-c8495656e9c7"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
                 {
                     "description": "Segment of C3 on F.Silkscreen",
                     "pos": {
                         "x": 12.55,
                         "y": 2.45
                     },
-                    "uuid": "f55d80c9-e589-4115-ae48-475f57076fbe"
+                    "uuid": "357f9dd1-8e4e-4e2c-9909-cac447109150"
+                },
+                {
+                    "description": "Arc of C7 on F.Silkscreen",
+                    "pos": {
+                        "x": 11.89,
+                        "y": 2.65
+                    },
+                    "uuid": "963ce35e-afc9-48f8-bb96-864ade8365ee"
                 }
             ],
             "severity": "warning",
@@ -605,20 +605,20 @@
             "description": "Silkscreen clearance",
             "items": [
                 {
-                    "description": "Segment of C7 on F.Silkscreen",
-                    "pos": {
-                        "x": 10.45,
-                        "y": 2.5
-                    },
-                    "uuid": "a0f5420c-206d-466c-ac85-5a4fa0d78fde"
-                },
-                {
                     "description": "Arc of C3 on F.Silkscreen",
                     "pos": {
                         "x": 11.11,
                         "y": 2.3
                     },
-                    "uuid": "d1b1119e-6ae2-4c81-ade9-8cb889b58bbe"
+                    "uuid": "5b488a31-bd47-4e57-8425-64b39b79010a"
+                },
+                {
+                    "description": "Segment of C7 on F.Silkscreen",
+                    "pos": {
+                        "x": 10.45,
+                        "y": 2.5
+                    },
+                    "uuid": "c013a3e5-94e4-4a97-b01e-d52e52ff9eca"
                 }
             ],
             "severity": "warning",
@@ -633,7 +633,7 @@
                         "x": 11.61,
                         "y": 2.45
                     },
-                    "uuid": "55692bc1-681c-44c0-915f-80874f868c79"
+                    "uuid": "498f5984-b4ef-4220-9567-9be22fa2349a"
                 },
                 {
                     "description": "Segment of C7 on F.Silkscreen",
@@ -641,7 +641,7 @@
                         "x": 11.39,
                         "y": 2.5
                     },
-                    "uuid": "fac3b92c-1486-490b-95b2-8f956ea01df3"
+                    "uuid": "84075ee8-ce5e-48c6-b3d1-c013983528a6"
                 }
             ],
             "severity": "warning",
@@ -656,7 +656,7 @@
                         "x": 12.83,
                         "y": 2.46
                     },
-                    "uuid": "5b64c8cf-df46-4bb6-ac85-b10671aeb9bc"
+                    "uuid": "5f64bc01-512e-4b7b-a28e-61482cd6fa29"
                 },
                 {
                     "description": "Arc of C3 on F.Silkscreen",
@@ -664,7 +664,7 @@
                         "x": 12.55,
                         "y": 2.3
                     },
-                    "uuid": "9ab1fc54-6f2b-421d-bee3-942c9478b731"
+                    "uuid": "b8dcd515-6326-46d5-aaba-2d74be6d287c"
                 }
             ],
             "severity": "warning",
@@ -673,21 +673,21 @@
         {
             "description": "Silkscreen clearance",
             "items": [
+                {
+                    "description": "Arc of C3 on F.Silkscreen",
+                    "pos": {
+                        "x": 12.55,
+                        "y": 2.3
+                    },
+                    "uuid": "b8dcd515-6326-46d5-aaba-2d74be6d287c"
+                },
                 {
                     "description": "Segment of L1 on F.Silkscreen",
                     "pos": {
                         "x": 12.68,
                         "y": 2.31
                     },
-                    "uuid": "9a514d03-8334-42ff-b0ca-4366917abc94"
-                },
-                {
-                    "description": "Arc of C3 on F.Silkscreen",
-                    "pos": {
-                        "x": 12.55,
-                        "y": 2.3
-                    },
-                    "uuid": "9ab1fc54-6f2b-421d-bee3-942c9478b731"
+                    "uuid": "f9518010-90ce-47b2-a351-134ff9f46357"
                 }
             ],
             "severity": "warning",
@@ -696,21 +696,21 @@
         {
             "description": "Silkscreen clearance",
             "items": [
+                {
+                    "description": "Segment of C3 on F.Silkscreen",
+                    "pos": {
+                        "x": 12.7,
+                        "y": 1.6
+                    },
+                    "uuid": "1bc0899a-3812-48d3-9eb5-7736195582bb"
+                },
                 {
                     "description": "Segment of L1 on F.Silkscreen",
                     "pos": {
                         "x": 12.83,
                         "y": 2.46
                     },
-                    "uuid": "5b64c8cf-df46-4bb6-ac85-b10671aeb9bc"
-                },
-                {
-                    "description": "Segment of C3 on F.Silkscreen",
-                    "pos": {
-                        "x": 12.7,
-                        "y": 1.6
-                    },
-                    "uuid": "ecb201cb-70ea-4093-b629-02bbeb9db359"
+                    "uuid": "5f64bc01-512e-4b7b-a28e-61482cd6fa29"
                 }
             ],
             "severity": "warning",
@@ -719,21 +719,21 @@
         {
             "description": "Silkscreen clearance",
             "items": [
+                {
+                    "description": "Segment of C3 on F.Silkscreen",
+                    "pos": {
+                        "x": 12.7,
+                        "y": 1.6
+                    },
+                    "uuid": "1bc0899a-3812-48d3-9eb5-7736195582bb"
+                },
                 {
                     "description": "Segment of L1 on F.Silkscreen",
                     "pos": {
                         "x": 12.68,
                         "y": 2.31
                     },
-                    "uuid": "9a514d03-8334-42ff-b0ca-4366917abc94"
-                },
-                {
-                    "description": "Segment of C3 on F.Silkscreen",
-                    "pos": {
-                        "x": 12.7,
-                        "y": 1.6
-                    },
-                    "uuid": "ecb201cb-70ea-4093-b629-02bbeb9db359"
+                    "uuid": "f9518010-90ce-47b2-a351-134ff9f46357"
                 }
             ],
             "severity": "warning",
@@ -743,20 +743,20 @@
             "description": "Silkscreen clearance",
             "items": [
                 {
-                    "description": "Segment of L1 on F.Silkscreen",
-                    "pos": {
-                        "x": 12.68,
-                        "y": 1.61
-                    },
-                    "uuid": "00587327-37bf-431e-b08f-b24ba8a7b7d2"
-                },
-                {
                     "description": "Segment of C3 on F.Silkscreen",
                     "pos": {
                         "x": 12.7,
                         "y": 1.6
                     },
-                    "uuid": "ecb201cb-70ea-4093-b629-02bbeb9db359"
+                    "uuid": "1bc0899a-3812-48d3-9eb5-7736195582bb"
+                },
+                {
+                    "description": "Segment of L1 on F.Silkscreen",
+                    "pos": {
+                        "x": 12.68,
+                        "y": 1.61
+                    },
+                    "uuid": "466b9ffc-0db1-4805-ba92-f68a746c385d"
                 }
             ],
             "severity": "warning",
@@ -771,7 +771,7 @@
                         "x": 12.55,
                         "y": 1.6
                     },
-                    "uuid": "1f77d8d1-8a68-487d-a9de-28151498fa50"
+                    "uuid": "52e9f3ab-6c57-46e5-83c0-67b94c0796f7"
                 },
                 {
                     "description": "Segment of L1 on F.Silkscreen",
@@ -779,7 +779,7 @@
                         "x": 12.68,
                         "y": 2.31
                     },
-                    "uuid": "9a514d03-8334-42ff-b0ca-4366917abc94"
+                    "uuid": "f9518010-90ce-47b2-a351-134ff9f46357"
                 }
             ],
             "severity": "warning",
@@ -794,7 +794,7 @@
                         "x": 12.68,
                         "y": 1.61
                     },
-                    "uuid": "00587327-37bf-431e-b08f-b24ba8a7b7d2"
+                    "uuid": "466b9ffc-0db1-4805-ba92-f68a746c385d"
                 },
                 {
                     "description": "Arc of C3 on F.Silkscreen",
@@ -802,7 +802,7 @@
                         "x": 12.55,
                         "y": 1.6
                     },
-                    "uuid": "1f77d8d1-8a68-487d-a9de-28151498fa50"
+                    "uuid": "52e9f3ab-6c57-46e5-83c0-67b94c0796f7"
                 }
             ],
             "severity": "warning",
@@ -811,21 +811,21 @@
         {
             "description": "Silkscreen clearance",
             "items": [
+                {
+                    "description": "Segment of CA1 on F.Silkscreen",
+                    "pos": {
+                        "x": 16.8,
+                        "y": 1.25
+                    },
+                    "uuid": "6eaf78ea-cdca-4d51-9971-b3b75f7cf49e"
+                },
                 {
                     "description": "Segment of R3 on F.Silkscreen",
                     "pos": {
                         "x": 16.91,
                         "y": 2.45
                     },
-                    "uuid": "93f0fc07-f230-4dee-b23c-5b2fe08e46c1"
-                },
-                {
-                    "description": "Segment of CA1 on F.Silkscreen",
-                    "pos": {
-                        "x": 16.8,
-                        "y": 1.25
-                    },
-                    "uuid": "9feba3dc-e840-4b9e-80dd-0e94caed804c"
+                    "uuid": "b92b4dfc-66cd-47f3-a8a4-b0545916cd87"
                 }
             ],
             "severity": "warning",
@@ -834,21 +834,21 @@
         {
             "description": "Silkscreen clearance",
             "items": [
-                {
-                    "description": "Segment of CA1 on F.Silkscreen",
-                    "pos": {
-                        "x": 16.8,
-                        "y": 1.25
-                    },
-                    "uuid": "9feba3dc-e840-4b9e-80dd-0e94caed804c"
-                },
                 {
                     "description": "Segment of R3 on F.Silkscreen",
                     "pos": {
                         "x": 16.91,
                         "y": 1.45
                     },
-                    "uuid": "f97b4ad1-b3d9-42f4-b315-970ce1ab9f79"
+                    "uuid": "3fe893dc-7dae-4d4a-8d9a-1332f38744b4"
+                },
+                {
+                    "description": "Segment of CA1 on F.Silkscreen",
+                    "pos": {
+                        "x": 16.8,
+                        "y": 1.25
+                    },
+                    "uuid": "6eaf78ea-cdca-4d51-9971-b3b75f7cf49e"
                 }
             ],
             "severity": "warning",
@@ -857,21 +857,21 @@
         {
             "description": "Silkscreen clearance",
             "items": [
-                {
-                    "description": "Segment of R3 on F.Silkscreen",
-                    "pos": {
-                        "x": 16.91,
-                        "y": 2.45
-                    },
-                    "uuid": "93f0fc07-f230-4dee-b23c-5b2fe08e46c1"
-                },
                 {
                     "description": "Arc of CA1 on F.Silkscreen",
                     "pos": {
                         "x": 16.65,
                         "y": 1.75
                     },
-                    "uuid": "d386d99f-43c3-4399-a15d-eb9a7ee0f448"
+                    "uuid": "3dc94f54-6cc4-4c95-ac44-0f11f43d7c8e"
+                },
+                {
+                    "description": "Segment of R3 on F.Silkscreen",
+                    "pos": {
+                        "x": 16.91,
+                        "y": 2.45
+                    },
+                    "uuid": "b92b4dfc-66cd-47f3-a8a4-b0545916cd87"
                 }
             ],
             "severity": "warning",
@@ -880,21 +880,21 @@
         {
             "description": "Silkscreen clearance",
             "items": [
-                {
-                    "description": "Segment of CA2 on F.Silkscreen",
-                    "pos": {
-                        "x": 18.85,
-                        "y": 1.75
-                    },
-                    "uuid": "2f939c93-274f-43b9-9b1f-6731fc35a974"
-                },
                 {
                     "description": "Segment of R3 on F.Silkscreen",
                     "pos": {
                         "x": 18.79,
                         "y": 2.45
                     },
-                    "uuid": "eca18bbc-152d-41fd-9ee2-cfd1951bf80e"
+                    "uuid": "c1e81a1e-0b47-4915-abf5-97881e1dae04"
+                },
+                {
+                    "description": "Segment of CA2 on F.Silkscreen",
+                    "pos": {
+                        "x": 18.85,
+                        "y": 1.75
+                    },
+                    "uuid": "d96700cc-7530-4e16-93ae-9a8674840bad"
                 }
             ],
             "severity": "warning",
@@ -903,21 +903,21 @@
         {
             "description": "Silkscreen clearance",
             "items": [
+                {
+                    "description": "Segment of R3 on F.Silkscreen",
+                    "pos": {
+                        "x": 18.79,
+                        "y": 2.45
+                    },
+                    "uuid": "c1e81a1e-0b47-4915-abf5-97881e1dae04"
+                },
                 {
                     "description": "Arc of CA2 on F.Silkscreen",
                     "pos": {
                         "x": 19.0,
                         "y": 1.75
                     },
-                    "uuid": "abc42c69-8b1c-45ea-9fcd-5f7b1d5e01b3"
-                },
-                {
-                    "description": "Segment of R3 on F.Silkscreen",
-                    "pos": {
-                        "x": 18.79,
-                        "y": 2.45
-                    },
-                    "uuid": "eca18bbc-152d-41fd-9ee2-cfd1951bf80e"
+                    "uuid": "cdaedc68-842e-4ca7-921a-fc588352ec0f"
                 }
             ],
             "severity": "warning",
@@ -932,7 +932,7 @@
                         "x": 18.85,
                         "y": 1.75
                     },
-                    "uuid": "2f939c93-274f-43b9-9b1f-6731fc35a974"
+                    "uuid": "d96700cc-7530-4e16-93ae-9a8674840bad"
                 },
                 {
                     "description": "Segment of R3 on F.Silkscreen",
@@ -940,7 +940,7 @@
                         "x": 18.79,
                         "y": 1.45
                     },
-                    "uuid": "ffc8f1e4-93b7-4a16-bbf5-e4d863343f54"
+                    "uuid": "ec51abf1-c700-4b44-8762-bbbe8c3a1af4"
                 }
             ],
             "severity": "warning",
@@ -955,7 +955,7 @@
                         "x": 19.6,
                         "y": 8.0
                     },
-                    "uuid": "598b1bdc-627d-5389-b9fb-e65567f7fb62"
+                    "uuid": "875b0ec5-1b7d-51b1-9409-487e8c1d1e6c"
                 },
                 {
                     "description": "NPTH pad of J1",
@@ -978,7 +978,7 @@
                         "x": 8.1,
                         "y": 8.22
                     },
-                    "uuid": "f14e9132-ffb7-4279-a679-995f7ac1ed16"
+                    "uuid": "c5422f05-4b80-4d44-93eb-4964be6b6f68"
                 },
                 {
                     "description": "Pad 32 [VBAT] of U1 on F.Cu",
@@ -1001,7 +1001,7 @@
                         "x": 9.4,
                         "y": 9.68
                     },
-                    "uuid": "2d7e9e17-3230-4cdf-a90e-c10d41ae80d1"
+                    "uuid": "0237e949-421e-4bce-88dc-41dcde115f6f"
                 },
                 {
                     "description": "Pad 1 [DEC1] of U1 on F.Cu",
@@ -1024,7 +1024,7 @@
                         "x": 9.4,
                         "y": 9.68
                     },
-                    "uuid": "2d7e9e17-3230-4cdf-a90e-c10d41ae80d1"
+                    "uuid": "0237e949-421e-4bce-88dc-41dcde115f6f"
                 },
                 {
                     "description": "Pad 2 [P0_00] of U1 on F.Cu",
@@ -1047,7 +1047,7 @@
                         "x": 10.1,
                         "y": 9.83
                     },
-                    "uuid": "d901b0ee-09ed-4cc6-afa5-072c5ccd0675"
+                    "uuid": "3280da46-85c9-4cde-a674-87189c52535a"
                 },
                 {
                     "description": "Pad 2 [P0_00] of U1 on F.Cu",
@@ -1070,7 +1070,7 @@
                         "x": 6.15,
                         "y": 0.65
                     },
-                    "uuid": "d972719e-e7e3-4b0e-a1d8-67618f62b880"
+                    "uuid": "dbb7ad61-fbfb-4117-9d22-50efe316be0f"
                 },
                 {
                     "description": "Pad 1 [XC1] of C1 on F.Cu",
@@ -1093,7 +1093,7 @@
                         "x": 8.41,
                         "y": 9.02
                     },
-                    "uuid": "27c254a6-4c38-46b5-92a1-479a182e32ce"
+                    "uuid": "1fdd4afa-535e-4864-85d8-63ef0692afdc"
                 },
                 {
                     "description": "Pad 32 [VBAT] of U1 on F.Cu",
@@ -1116,7 +1116,7 @@
                         "x": 11.89,
                         "y": 3.5
                     },
-                    "uuid": "3cb52683-632d-4bd9-9530-2bddca886062"
+                    "uuid": "c2125895-865f-477e-ac14-6de8ac7e2d58"
                 },
                 {
                     "description": "Pad 21 [<no net>] of U1 on F.Cu",
@@ -1139,7 +1139,7 @@
                         "x": 11.89,
                         "y": 3.5
                     },
-                    "uuid": "3cb52683-632d-4bd9-9530-2bddca886062"
+                    "uuid": "c2125895-865f-477e-ac14-6de8ac7e2d58"
                 },
                 {
                     "description": "Pad 20 [GND] of U1 on F.Cu",
@@ -1162,7 +1162,7 @@
                         "x": 11.89,
                         "y": 3.35
                     },
-                    "uuid": "7d8cdcf0-3188-42a6-ae26-ee5f85be7c66"
+                    "uuid": "915eca40-e82e-49b0-9ebb-4b2737776b39"
                 },
                 {
                     "description": "Pad 20 [GND] of U1 on F.Cu",
@@ -1185,7 +1185,7 @@
                         "x": 10.95,
                         "y": 3.5
                     },
-                    "uuid": "96d7cc55-adc0-4e03-bc19-acfbbaef1840"
+                    "uuid": "f9d25230-4ec4-48dd-bbe8-e09d015904b2"
                 },
                 {
                     "description": "Pad 22 [DEC3] of U1 on F.Cu",
@@ -1208,7 +1208,7 @@
                         "x": 10.45,
                         "y": 3.35
                     },
-                    "uuid": "b38c0f80-aa35-4cb6-810a-506aa8cec82a"
+                    "uuid": "08565a61-b1be-421c-bb60-9a18e34190cf"
                 },
                 {
                     "description": "Pad 23 [XC1] of U1 on F.Cu",

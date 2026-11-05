@@ -73,6 +73,18 @@ def pad_xy(circuit, ref, number):
 # copper on any layer, the antenna's own pads excepted. F.Cu: the strip between the pad pairs,
 # then the full width below the pads; B.Cu: the whole box.
 ANT_BOX = (AX - 2.0, 0.0, AX + 2.0, 6.0)
+
+# Kappa on the back, under the cell holder (house rule: a cat portrait and the credit on every
+# board). White mask, black silk: the silk is his dark fur. art/make_kappa.py makes the PNG.
+HERE = __import__("pathlib").Path(__file__).resolve().parent.parent
+ART_PNG = HERE / "art" / "kappa.png"
+ART_PX = 0.15                        # mm per pixel: 130 x 159 px -> 19.5 x 23.85 mm
+ART_W, ART_H = 19.5, 23.85
+ART_X, ART_TOP = round(W / 2 - ART_W / 2, 3), 20.6
+ART_BOX = (ART_X - 0.4, ART_TOP - 0.4, ART_X + ART_W + 0.4, ART_TOP + ART_H + 0.4)
+CREDIT = "Designed by Nakomis/C"
+CREDIT_Y = round(ART_TOP + ART_H + 1.0, 2)
+CREDIT_BOX = (W / 2 - 8.0, CREDIT_Y - 1.0, W / 2 + 8.0, CREDIT_Y + 1.0)
 _PAD_BOTTOM = round(AY + 0.65 + 0.3 + 0.1, 3)
 
 
@@ -262,7 +274,13 @@ def silk(c):
     out.append(("SWD", round(AT["J1"][0] - 4.4, 3), round(AT["J1"][1] - 3.6, 3), 0.8))
     out.append(("1", round(AT["J2"][0] - 1.25, 3), round(AT["J2"][1] + 0.9, 3), 0.8))
     out.append(("iphone-remote fob v0.1", W / 2, round(L - 0.9, 3), 0.8))
+    out.append((CREDIT, W / 2, CREDIT_Y, 0.8, "B.SilkS"))
     return out
+
+
+def art():
+    """Kappa on B.SilkS, mirrored by the writer so that he reads correctly from the back."""
+    return [(ART_PNG, ART_X, ART_TOP, ART_H, "back")]
 
 
 def edge_vias():
