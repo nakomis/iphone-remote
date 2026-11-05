@@ -58,11 +58,12 @@ def layout(c, out, do_route, passes):
                        fixed_vias=fixed, fixed_tracks=hand_t, layer_keepouts=fl.layer_keepouts(),
                        skip_nets=("GND",), log="/tmp/irem-fob-route.log")
         tracks, vias = prune(c, p, tracks + rt, fixed + rv, keep=fixed)
-        stitch = fl.stitch_vias(c, p, tracks, vias, pitch=1.5, avoid=[fl.ANT_BOX])
+        stitch = fl.stitch_vias(c, p, tracks, vias, pitch=1.5, avoid=[fl.ANT_BOX, fl.ART_BOX, fl.CREDIT_BOX])
         print(f"stitching: {len(stitch)} GND vias")
         vias += stitch
     board = out / f"{STEM}.kicad_pcb"
-    write_board(c, p, board, tracks, vias, layers=2, keepouts=fl.keepouts(), silk=fl.silk(c), pad_extra=fl.pad_extra(c),
+    write_board(c, p, board, tracks, vias, layers=2, keepouts=fl.keepouts(), silk=fl.silk(c), art=fl.art(), pad_extra=fl.pad_extra(c),
+                mask="White", silkscreen="Black",
                 hide_refs=set(c.instances))
     run = lambda *a: subprocess.run([KICAD_CLI, *a], check=True, capture_output=True, text=True)
     run("pcb", "export", "svg", "--layers", "F.Cu,F.Silkscreen,Edge.Cuts", "--mode-single",
