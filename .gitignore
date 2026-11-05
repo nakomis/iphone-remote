@@ -1,0 +1,24 @@
+# Planning
+PLAN.md
+
+# macOS
+.DS_Store
+
+# KiCad
+*.kicad_prl
+*-backups/
+fp-info-cache
+*.lck
+_autosave-*
+\#auto_saved_files#
+hardware/**/production/
+hardware/**/gerbers/
+
+# Zephyr / nRF Connect SDK
+firmware/**/build/
+firmware/**/build_*/
+.west/
+
+# Coverage
+coverage/
+lcov.info
