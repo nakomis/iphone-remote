@@ -1,0 +1,4 @@
+# The fob has the nRF52810-QCAA (QFN-32): the same die, flash and RAM as the QFAA that Zephyr
+# names, in a smaller package.
+config BOARD_IPHONE_REMOTE_FOB
+	select SOC_NRF52810_QFAA

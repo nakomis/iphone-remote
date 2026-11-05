@@ -119,8 +119,9 @@ The fob repeats a press about 15 times, and iOS reports each advert it hears.
 - A repeat of a press already seen is not acted on. While its ack is still
   queued or advertising, nothing more is needed; after that the phone may queue
   the ack again, which covers a fob that missed the first one.
-- Fobs are told apart only by fob_id, not by address: the address of a
-  random-static fob changes with each cell. Two fobs set to the same ID are a
+- Fobs are told apart only by fob_id, never by Bluetooth address. iOS hides
+  the real address behind a per-phone identifier, and a replacement fob with
+  the same ID should just work. Two fobs set to the same ID are a
   user error. They'd mostly still work, but their acks would be ambiguous.
 
 ## 5. Timing

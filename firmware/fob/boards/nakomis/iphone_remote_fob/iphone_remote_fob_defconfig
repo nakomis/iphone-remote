@@ -1,0 +1,11 @@
+CONFIG_ARM_MPU=y
+CONFIG_HW_STACK_PROTECTION=y
+CONFIG_GPIO=y
+
+# No 32 kHz crystal: the low-frequency clock runs on the RC oscillator, calibrated.
+CONFIG_CLOCK_CONTROL_NRF_K32SRC_RC=y
+
+# No UART on the fob (SWD and SWO only).
+CONFIG_SERIAL=n
+CONFIG_CONSOLE=n
+CONFIG_UART_CONSOLE=n

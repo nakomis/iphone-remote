@@ -1,0 +1,6 @@
+board:
+  name: iphone_remote_fob
+  full_name: iphone-remote fob
+  vendor: nakomis
+  socs:
+  - name: nrf52810
