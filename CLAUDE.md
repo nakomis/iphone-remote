@@ -24,6 +24,7 @@ A coin-cell BLE trigger fob for a custom iPhone camera app. Plane project: `IREM
 
 - `hardware/` — KiCad project
 - `firmware/` — nRF Connect SDK (Zephyr) application
+- `firmware/fob-emulator/` — ESP32-S3 (ESP-IDF) stand-in for the fob, plus a Mac stand-in for the phone, for testing the iPhone side (IREM-8)
 - `docs/superpowers/specs/` — design document
 - `docs/protocol.md` — the over-the-air protocol (IREM-2): UUIDs, payload, ack, test vectors
 

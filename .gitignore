@@ -22,3 +22,9 @@ firmware/**/build_*/
 # Coverage
 coverage/
 lcov.info
+
+# ESP-IDF (fob emulator)
+firmware/fob-emulator/sdkconfig
+firmware/fob-emulator/sdkconfig.old
+firmware/fob-emulator/managed_components/
+firmware/fob-emulator/dependencies.lock
