@@ -35,7 +35,7 @@ so it can be checked line by line against Nordic's "QCAA QFN32 with DC/DC regula
 | Y1, C1, C2 | 32 MHz CL 8 pF (C718072), 12 pF ×2 | |
 | C3, L1 | 0.8 pF shunt, 3.9 nH series | Nordic's match → 50 Ω `RF` |
 | CA1, R3, CA2 | DNP, 0 Ω, DNP | π footprint for retuning the antenna by hand |
-| AE1 | Johanson 2450AT18D0100002E (C17410360) | pad 1 feed, 2–4 GND (fed from the left) |
+| AE1 | Johanson 2450AT18D0100E (C2917718) | pad 1 feed, 2–4 GND (fed from the left) |
 | SW1, R2 | TS-1187A (C318884), 1 MΩ pull-up | P0.06, active low |
 | D1, R1 | red 0603 LED (C2286), 470 Ω | P0.09, active high |
 | JP1–JP3 | solder jumpers to GND | P0.12 / P0.14 / P0.15 = ID bits 0 / 1 / 2 |
