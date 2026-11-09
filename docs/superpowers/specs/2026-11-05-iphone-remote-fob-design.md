@@ -114,6 +114,10 @@ improvise.
   from Nordic's π-match. Martin chose this over a printed trace antenna for
   the first run: there's no VNA to tune a trace antenna, and the chip
   antenna's reference layout makes a first spin far more likely to work.
+  *9 Nov 2026: C2917718 sold out at checkout; the board now uses
+  2450AT18D0100002E (C17410360), the same antenna on another Johanson reel
+  code: identical EasyEDA footprint, "Economic and Standard", MSL 1, 895 in
+  stock.*
   Keep 0402 footprints for every matching position, so the match can be
   retuned by hand without a respin. No copper on either layer within the
   antenna's keep-out area, which is in Johanson's layout. Keep the metal cell
