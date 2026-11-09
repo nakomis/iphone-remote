@@ -5947,7 +5947,7 @@
 				)
 			)
 		)
-		(property "Value" "2450AT18D0100002E"
+		(property "Value" "2450AT18D0100E"
 			(at 0 4.65 0)
 			(layer "F.Fab")
 			(uuid "b4b276bc-4ee0-4db1-8467-ab51778741a6")
